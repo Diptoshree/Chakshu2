@@ -12,11 +12,11 @@ from docx.shared import Inches
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Set your Gemini API Key
-genai.configure(api_key="AIzaSyB-rKNXSo5FF_Szk2kvSw5Ew_rcfG9jxzs")  # Replace with your actual API key
+genai.configure(api_key="AIzaSyAymA7P4sRcrb0S9IAsC2cgkfxc0a6Fzj8")  # Replace with your actual API key
 
 # Function to extract text from an image using Gemini Vision API
 def extract_text_from_image(image):
-    logging.info("Processing uploaded image")
+    logging.info("Processing uploaded image")s
     model = genai.GenerativeModel("gemini-2.0-pro-exp-02-05")
     response = model.generate_content([image, """
     Extract only the news headline and body text from this image.
