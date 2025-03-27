@@ -16,7 +16,7 @@ genai.configure(api_key="AIzaSyAymA7P4sRcrb0S9IAsC2cgkfxc0a6Fzj8")  # Replace wi
 
 # Function to extract text from an image using Gemini Vision API
 def extract_text_from_image(image):
-    logging.info("Processing uploaded image")s
+    logging.info("Processing uploaded image")
     model = genai.GenerativeModel("gemini-2.0-pro-exp-02-05")
     response = model.generate_content([image, """
     Extract only the news headline and body text from this image.
