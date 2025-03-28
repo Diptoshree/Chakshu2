@@ -14,7 +14,12 @@ import json
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-genai.configure(api_key="AIzaSyAuOXUSVi8r1gaWljduqKqedeN4UN2T7Ds")
+api_key = st.secrets["secret_section"]["api_key"]
+ 
+# Configure the client using the API key
+
+genai.configure(api_key=api_key)
+
 
 # def extract_text_from_image(image):
 #     logging.info("Processing uploaded image")
