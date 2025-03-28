@@ -54,19 +54,20 @@ def extract_text_from_image(image):
     model = genai.GenerativeModel("gemini-2.5-pro-exp-03-25")
     prompt = """
     You are extracting text from a scanned newspaper cutting. Your task is to separate the text into two categories: Headline and Body Text.
-
-    - **Headline**: The main news headline, usually in the largest bold font, spanning up to 3 lines with a uniform font size. Ignore subheaders, captions, dates, and newspaper organization names.
-                    (Very Important)-Under Headline section DO not extract any text which has smaller font size compared to headline.Texts printed in smaller forns are subheading, location or body text. We only and only want Headline. This instruction needs to be followed strictly.
-                    Only and Only Headline. No Newspaper Brand Name. No Location. No Subheader.
-    - **Body Text**: All other content, including subheaders, captions, and article text.
-
-    **Output format (strictly follow this structure without any labels, explanations, or additional formatting):**
-
-    First, print the extracted headline (Between 1 to 3 lines).
-    Then, print a blank line.
-    Finally, print the extracted body text.
-
-    Ensure there are no extra words, labels, or formatting—just the extracted text in two sections.
+    
+    **Headline Extraction Rules:**
+    - The headline must be in the **largest bold font** and **spanning up to 3 lines**.
+    - The **entire headline must be in the same font and size**. If any part of the text is in a different font or smaller size, **do not include it in the headline**.
+    - **Do NOT include** subheaders, locations, captions, dates, bylines, author names, or newspaper organization names.
+    - If no valid headline is found, return **"No headline detected"**.
+    
+    **Body Text Extraction Rules:**
+    - The remaining content, including article text, subheaders, and captions.
+    
+    **Strict Output Format (NO labels, explanations, or extra formatting):**
+    - First, print the extracted headline (Between 1 to 3 lines, ensuring uniform font and size).
+    - Then, print a blank line.
+    - Finally, print the extracted body text.
     """
     
     response = model.generate_content([image, prompt])
@@ -75,10 +76,10 @@ def extract_text_from_image(image):
     # Process response to extract headline and body text
     lines = extracted_text.split("\n")
     headline = " ".join(lines[:3]).strip() if lines else "No headline detected"
-    body_text = "\n".join(lines[1:]).strip() if len(lines) > 3 else "No additional text found"
-
+    body_text = "\n".join(lines[0:]).strip() if len(lines) > 3 else "No additional text found"
+    
     logging.info(f"Extracted Headline: {headline}")
-
+    
     return headline, body_text
 
 
