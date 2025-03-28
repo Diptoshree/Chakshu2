@@ -6,7 +6,7 @@ import io
 import matplotlib.pyplot as plt
 from docx import Document
 from docx.shared import Inches
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import os
 import zipfile
 import json
