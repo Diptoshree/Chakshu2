@@ -52,7 +52,7 @@ def extract_text_from_image(image):
 
     - **Headline**: The main news headline, usually in the largest bold font, spanning up to 3 lines with a uniform font size. Ignore subheaders, captions, dates, and newspaper organization names.
                     (Very Important)-Under Headline section DO not extract any text which has smaller font size compared to headline.Texts printed in smaller forns are subheading, location or body text. We only and only want Headline. This instruction needs to be followed strictly.
-                    Only and Only Headline. No other text.
+                    Only and Only Headline. No Newspaper Brand Name. No Location. No Subheader.
     - **Body Text**: All other content, including subheaders, captions, and article text.
 
     **Output format (strictly follow this structure without any labels, explanations, or additional formatting):**
