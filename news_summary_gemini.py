@@ -55,12 +55,16 @@ def extract_text_from_image(image):
     prompt = """
     You are extracting text from a scanned newspaper cutting. Your task is to separate the text into two categories: Headline and Body Text.
 
-    - **Headline**: The main news headline, usually in the largest bold font, spanning up to 3 lines with a uniform font size. Ignore subheaders, captions, dates, and newspaper organization names.
-                    (Very Important)Under Headline section DO not extract any text which has smaller font size compared to headline.Texts printed in smaller forns are subheading, location or body text. We only and only want Headline.
-                    If the news provider and location is mentiontioned such as 'भास्कर संवाददाता | डभियाखेड़ा' or 'स्टार समाचार | सीधी', these must not be the part of headlines.
+     - **Headline**: The main news headline, usually in the largest bold font, spanning between one to three lines with a uniform font size. Ignore subheaders, captions, dates, and newspaper organization names.
                     This instruction needs to be followed strictly.
 
     - **Body Text**: All other content, including subheaders, captions, and article text.
+	   - **Other Text**:Any other text which is placed in the top 5 lines apart from head line should come under other text.
+					                Example:
+					                Newspaper Brand name: 'दैनिक भास्कर'
+				                	News provider/ news Bureau or place :'भास्कर संवाददाता | डभियाखेड़ा' or 'स्टार समाचार | सीधी'
+					                Text which has smaller font size compared to headline such as subheading, location or brand, photo caption  must come under other text.
+                  
 
     **Output format (strictly follow this structure without any labels, explanations, or additional formatting):**
 
