@@ -15,55 +15,25 @@ import json
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 api_key = st.secrets["secret_section"]["api_key"]
- 
 # Configure the client using the API key
-
 genai.configure(api_key=api_key)
-
-
-# def extract_text_from_image(image):
-#     logging.info("Processing uploaded image")
-#     model = genai.GenerativeModel("gemini-2.5-pro-exp-03-25")
-#     response = model.generate_content([image, """
-# Your task is to extract the entire text from scanned newspaper cuttings and then split in two different parts, Headline and Body text.
-                                       
-# Headline: extract only the headline from scanned newspaper cuttings.   
-# The headline must have the same font and size across all its lines.
-# Do not include subheadings, location names, or any other text—extract only the headline.
-# The headline must not exceed 3 lines.
-# The headline is usually the largest and boldest text in the image—focus only on this.
-# Ignore any smaller text, body content, captions, or date information.
-# Return only the extracted headline without any additional labels, explanations, or formatting.
-                                       
-# body_text:Apart from headline every other text should come under body text.                                      
-                                       
-# """])
-#     extracted_text = response.text.strip()
-#     lines = extracted_text.split("\n")
-#     headline = " ".join(lines[:3]) if lines else "No headline detected"
-#     print('headline:',headline)
-#     body_text = "\n".join(lines[3:]).strip() if len(lines) > 3 else "No additional text found"
-#     print('body_text:',body_text)
-#     logging.info(f"Extracted Headline: {headline}")
-#     return headline, body_text
-
 
 def extract_text_from_image(image):
     logging.info("Processing uploaded image")
     
     model = genai.GenerativeModel("gemini-2.5-pro-exp-03-25")
     prompt = """
-    You are extracting text from a scanned newspaper cutting. Your task is to separate the text into two categories: Headline and Body Text.
+    You are extracting text from a scanned newspaper cutting. Your task is to separate the text into three categories: Headline Body Text and other text.
 
-     - **Headline**: The main news headline, usually in the largest bold font, spanning between one to three lines with a uniform font size. Ignore subheaders, captions, dates, and newspaper organization names.
+    - **Headline**: The main news headline, usually in the largest bold font, spanning between one to three lines with a uniform font size. Ignore subheaders, captions, dates, and newspaper organization names.
                     This instruction needs to be followed strictly.
 
     - **Body Text**: All other content, including subheaders, captions, and article text.
-	   - **Other Text**:Any other text which is placed in the top 5 lines apart from head line should come under other text.
-					                Example:
-					                Newspaper Brand name: 'दैनिक भास्कर'
-				                	News provider/ news Bureau or place :'भास्कर संवाददाता | डभियाखेड़ा' or 'स्टार समाचार | सीधी'
-					                Text which has smaller font size compared to headline such as subheading, location or brand, photo caption  must come under other text.
+    - **Other** Text**:Any other text which is placed in the top 5 lines apart from head line should come under other text.
+					Example:
+					Newspaper Brand name: 'दैनिक भास्कर'
+					News provider/ news Bureau or place :'भास्कर संवाददाता | डभियाखेड़ा' or 'स्टार समाचार | सीधी'
+					text which has smaller font size compared to headline such as subheading, location or brand, photo caption  must come under other text.
                   
 
     **Output format (strictly follow this structure without any labels, explanations, or additional formatting):**
@@ -86,7 +56,6 @@ def extract_text_from_image(image):
     logging.info(f"Extracted Headline: {headline}")
 
     return headline, body_text
-
 
 
 
