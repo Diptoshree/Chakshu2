@@ -14,19 +14,19 @@ import json
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# api_key = st.secrets["secret_section"]["api_key"]
-# # Configure the client using the API key
-# genai.configure(api_key=api_key)
-# Retrieve API keys from Streamlit secrets
-api_keys = st.secrets["secret_section"]["api_keys"]  # Ensure this is a list of 5 keys
-api_index = 0  # Initialize index for key rotation
+api_key = st.secrets["secret_section"]["api_key"]
+# Configure the client using the API key
+genai.configure(api_key=api_key)
+#Retrieve API keys from Streamlit secrets
+# api_keys = st.secrets["secret_section"]["api_keys"]  # Ensure this is a list of 5 keys
+# api_index = 0  # Initialize index for key rotation
 
-def get_next_api_key():
-    """Rotates API keys in a round-robin fashion."""
-    global api_index
-    key = api_keys[api_index]
-    api_index = (api_index + 1) % len(api_keys)  # Move to the next key
-    return key
+# def get_next_api_key():
+#     """Rotates API keys in a round-robin fashion."""
+#     global api_index
+#     key = api_keys[api_index]
+#     api_index = (api_index + 1) % len(api_keys)  # Move to the next key
+#     return key
 
 def extract_text_from_image(image):
     logging.info("Processing uploaded image")
