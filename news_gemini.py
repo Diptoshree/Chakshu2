@@ -13,7 +13,7 @@ import base64
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-genai.configure(api_key="AIzaSyBBAinN0d7m_hB7ZLOr0XYfYedXlUVoMBI")
+genai.configure(api_key="AIzaSyCQmnsy_sdw-muMMu0VRS0rixeMkiz1oWU")
 
 def extract_text_from_image(image):
     logging.info("Processing uploaded image")
