@@ -1,6 +1,4 @@
 streamlit
+pillow
 google-generativeai
-Pillow
-matplotlib
 python-docx
-base64
