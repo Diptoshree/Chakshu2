@@ -182,7 +182,7 @@ import json
 import re
 
 # ✅ Set your Gemini API key
-genai.configure(api_key="AIzaSyBBAinN0d7m_hB7ZLOr0XYfYedXlUVoMBI")  # Replace with your key
+genai.configure(api_key="AIzaSyAymA7P4sRcrb0S9IAsC2cgkfxc0a6Fzj8")  # Replace with your key
 
 # 🔵 Original function for analyzing a newspaper image
 def analyze_newspaper_image(image):
