@@ -31,7 +31,7 @@
 # def extract_text_from_image(image):
 #     logging.info("Processing uploaded image")
     
-#     model = genai.GenerativeModel("gemini-2.5-pro-exp-03-25")
+#     model = genai.GenerativeModel("gemini-2.0-flash")
 #     prompt = """
 #     You are extracting text from a scanned newspaper cutting. Your task is to separate the text into three categories: Headline Body Text and other text.
 
