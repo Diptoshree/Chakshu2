@@ -180,9 +180,11 @@ from docx import Document
 from docx.shared import Inches
 import json
 import re
-
+api_key = st.secrets["secret_section"]["api_key"]
+# Configure the client using the API key
+genai.configure(api_key=api_key)
 # ✅ Set your Gemini API key
-genai.configure(api_key="AIzaSyCKHM5JWCXGssd4n8zFVkl-nsfdChzvIvg")  # Replace with your key
+#genai.configure(api_key="")  # Replace with your key
 
 # 🔵 Original function for analyzing a newspaper image
 def analyze_newspaper_image(image):
