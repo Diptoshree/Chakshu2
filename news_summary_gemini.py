@@ -214,7 +214,7 @@ Return the result in this JSON format:
   "sentiment": ""
 }
 """
-    model = genai.GenerativeModel("gemini-2.5-pro-exp-03-25")
+    model = genai.GenerativeModel("gemini-2.0-flash")
     response = model.generate_content([prompt, image])
     return response.text
 
