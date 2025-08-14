@@ -30,7 +30,7 @@ You are an expert in analyzing newspaper clippings. From the newspaper image, ex
 7. News Bureau (e.g., 'New Delhi Bureau')
 8. Body Text (remaining text that forms the main article body. Please avoid photo captions)
 9. A concise summary of the article (within 120 words). Start the summary by repeating the original headline exactly, from next paragraph a brief summary in your own words. The language of summary should be same as the language of the original text.
-10. Sentiment of the news from the point of view of welbeing the Cityzen/government/administration (The sentiment of the news in one word 'Positive' or 'Negative')
+10. Sentiment of the news from the point of view of wellbeing the Cityzen/Government/Administration (The sentiment of the news in one word 'Positive' or 'Negative')
 Return the result in this JSON format:
 {
   "news_brand": "",
@@ -195,5 +195,6 @@ elif mode == "Bulk Image Search":
                     os.rmdir(temp_folder)
                 except Exception as cleanup_error:
                     print(f"Cleanup error: {cleanup_error}")
+
 
 
