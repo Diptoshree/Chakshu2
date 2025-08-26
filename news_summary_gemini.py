@@ -31,12 +31,17 @@ You are an expert in analyzing newspaper clippings. From the newspaper image, ex
 8. Body Text (remaining text that forms the main article body. Please avoid photo captions)
 9. A concise summary of the article (within 120 words). Start the summary by repeating the original headline exactly, from next paragraph a brief summary in your own words. The language of summary should be same as the language of the original text.
 10.Sentiment of the news from the point of view of the  wellbeing of citizens of the state.Please provide a single-word answer, either 'Positive' or 'Negative'.
-For example:
-- **Positive:** News about economic growth, new job opportunities, public health improvements, government relief efforts (e.g., flood relief), increased safety measures, or any policy or event that generally benefits the public.
-- **Negative:** News about natural calamities (e.g., floods, droughts), economic downturns, crime, public health crises or any event that generally harms or inconveniences the public.
-- **Positive:** For topics that could be seen as both positive and negative point of view
- For instance, a report on a natural calamity  and relief announced might be 'Negative' as it indicates public inconvinience/loss, 
- but the same report has a new cabinet decision about relief fund would be 'Positive' as the decision is framed as beneficial to citizens.
+**For the sentiment analysis, follow these strict rules**
+News topic 1:News about public health improvements, increased safety measures, government relief efforts (e.g., flood relief), or any policy or event that primarily benefits the public's social welfare. 
+Sentiment 1: 'Positive'
+
+News topics 2:News about natural calamities (e.g., floods, droughts), economic downturns, crime, public health crises,or any event that generally harms or inconveniences the public's social welfare.
+Sentiment 2: 'Negative'
+ 
+News topic 3:When a news story contains both positive and negative elements, such as business closures that lead to increased public safety or health, the sentiment is considered 'Positive' because the primary impact on citizens' well-being is beneficial.
+Sentiment 3:'Posotive'
+For example in case of 'प्रदेश में बंद होंगे सभी अहाते', the Sentiment should be Positive because restrction on alcohol consumption is positive for cityzen wellbeing
+ 
 Return the result in this JSON format:
 {
   "news_brand": "",
@@ -201,6 +206,7 @@ elif mode == "Bulk Image Search":
                     os.rmdir(temp_folder)
                 except Exception as cleanup_error:
                     print(f"Cleanup error: {cleanup_error}")
+
 
 
 
